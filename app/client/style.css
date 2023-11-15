@@ -26,3 +26,12 @@ body {
   padding-top: 10px;
   padding-bottom: 20px;
 }
+
+.colorBlockGreen {
+  background-color: rgb(55, 101, 81);
+  color: white;
+}
+
+.colorBlockWhite {
+  color: rgb(55, 101, 81);
+}
