@@ -35,3 +35,19 @@ body {
 .colorBlockWhite {
   color: rgb(55, 101, 81);
 }
+
+.colorBlockBlack {
+  background-color: black;
+  color: white;
+  height: 300px;
+  text-align: center;
+  padding-top: 120px;
+}
+
+.vendorBlock {
+  background-color: white;
+  border-color: black;
+  border-width: 3px;
+  border-style: solid;
+  color: rgb(55, 101, 81);
+}

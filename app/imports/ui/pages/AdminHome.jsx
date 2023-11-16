@@ -2,14 +2,14 @@ import React from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
 
 /** Regular Users */
-const UserHome = () => (
+const AdminHome = () => (
   <Container fluid>
     <Row className="colorBlockBlack">
-      <h1>USER WELCOME GRAPHIC (TODO)</h1>
+      <h1>ADMIN WELCOME GRAPHIC (TODO)</h1>
     </Row>
     <Row className="justify-content-center">
       <Col className="colorBlockGreen">
-        <h2>Favorite Restaurants</h2>
+        <h2>Restaurants</h2>
         <ul>
           <li>Panda Express</li>
           <li>Starbucks</li>
@@ -25,25 +25,22 @@ const UserHome = () => (
           <li>Dunkin Donuts</li>
         </ul>
       </Col>
-      <Col className="colorBlockWhite">
-        <h2>Favorite Menu Items</h2>
-        <ul>
-          <li>Chili & Hot Dog Plate</li>
-          <li>Vanilla Coffee</li>
-          <li>Spam Musubi</li>
-          <li>Chili & Hot Dog Plate</li>
-          <li>Vanilla Coffee</li>
-          <li>Spam Musubi</li>
-          <li>Chili & Hot Dog Plate</li>
-          <li>Vanilla Coffee</li>
-          <li>Spam Musubi</li>
-          <li>Chili & Hot Dog Plate</li>
-          <li>Vanilla Coffee</li>
-          <li>Spam Musubi</li>
-        </ul>
+      <Col className="vendorBlock">
+        <h2>Vendor Approval</h2>
+        <Container className="vendorBlock py-2">
+          <ul>
+            <li>McDonalds: Cody K.</li>
+            <li>Taco Bell: Johnathan C.</li>
+            <li>Pizza Hut: Travis Q.</li>
+            <li>Chick Fil A: Kyle B.</li>
+          </ul>
+        </Container>
+        <Container className="vendorBlock py-2">
+          View All
+        </Container>
       </Col>
     </Row>
   </Container>
 );
 
-export default UserHome;
+export default AdminHome;
