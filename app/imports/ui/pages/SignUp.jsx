@@ -37,7 +37,7 @@ const SignUp = () => {
     return (<Navigate to="/userhome" />);
   }
   return (
-    <Container id="signup-page">
+    <Container id="signup-page" className="py-3">
       <Row className="justify-content-center m-4">
         <Col xs={6}>
           <AutoForm schema={bridge} onSubmit={data => submit(data)}>

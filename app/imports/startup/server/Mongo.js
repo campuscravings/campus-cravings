@@ -1,5 +1,6 @@
 import { Meteor } from 'meteor/meteor';
 import { Stuffs } from '../../api/stuff/Stuff.js';
+import { Vendors } from '../../api/vendors/Vendors';
 
 /* eslint-disable no-console */
 
@@ -14,5 +15,18 @@ if (Stuffs.collection.find().count() === 0) {
   if (Meteor.settings.defaultData) {
     console.log('Creating default data.');
     Meteor.settings.defaultData.forEach(data => addData(data));
+  }
+}
+
+const addVendor = (vendor) => {
+  console.log(`  Adding: ${vendor.name} (${vendor.owner})`);
+  Vendors.collection.insert(vendor);
+};
+
+// Initialize the StuffsCollection if empty.
+if (Vendors.collection.find().count() === 0) {
+  if (Meteor.settings.defaultVendors) {
+    console.log('Creating default vendors.');
+    Meteor.settings.defaultVendors.forEach(vendor => addVendor(vendor));
   }
 }
