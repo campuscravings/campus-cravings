@@ -1,3 +1,4 @@
-[![ci-meteor-application-template-react](https://github.com/ics-software-engineering/meteor-application-template-react/actions/workflows/ci.yml/badge.svg)](https://github.com/ics-software-engineering/meteor-application-template-react/actions/workflows/ci.yml)
+# Campus Cravings Project Repo
+[Campus Cravings deployed on Digital Ocean](http://146.190.160.80/)
 
-For details, please see http://ics-software-engineering.github.io/meteor-application-template-react/
+For details, please see the [project website](https://campuscravings.github.io/)
