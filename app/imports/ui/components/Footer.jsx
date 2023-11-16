@@ -14,10 +14,7 @@ const Footer = () => (
         Honolulu, HI 96822
         {' '}
         <br />
-        <a href="http://ics-software-engineering.github.io/meteor-application-template-react">
-          Template Home
-          Page
-        </a>
+        <a href="https://campuscravings.github.io/">Campus Cravings Github</a>
       </Col>
     </Container>
   </footer>

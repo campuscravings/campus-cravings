@@ -25,7 +25,7 @@ class ProfilesCollection {
       },
       'foods.$': { // Define the type for each item in the array
         type: String,
-        allowedValues: ['Breakfast', 'Lunch', 'Dinner'], // Modify the allowed values as needed
+        allowedValues: ['Breakfast', 'Lunch', 'Dinner'],
       },
     });
     // Attach the schema to the collection, so all attempts to insert a document are checked against schema.
