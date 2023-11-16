@@ -1,5 +1,6 @@
 import { Meteor } from 'meteor/meteor';
 import { Stuffs } from '../../api/stuff/Stuff.js';
+import { Profiles } from '../../api/profiles/Profiles';
 
 /* eslint-disable no-console */
 
@@ -7,6 +8,7 @@ import { Stuffs } from '../../api/stuff/Stuff.js';
 const addData = (data) => {
   console.log(`  Adding: ${data.name} (${data.owner})`);
   Stuffs.collection.insert(data);
+  Profiles.collection.insert(data);
 };
 
 // Initialize the StuffsCollection if empty.
