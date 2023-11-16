@@ -3,8 +3,8 @@
 
 /* Set up some CSS variables to theme the application. */
 :root {
-  --matr-navbar-bg: #ECECEC;
-  --matr-navbar-bg-rgb: 236, 236, 236;
+  --matr-navbar-bg: rgb(55, 101, 81);
+  --matr-navbar-bg-rgb: rgb(55, 101, 81);
 }
 
 /* Change bootstrap variable values.
@@ -50,4 +50,9 @@ body {
   border-width: 3px;
   border-style: solid;
   color: rgb(55, 101, 81);
+}
+
+.customNav {
+  background-color: rgb(55, 101, 81);
+  color: white;
 }
