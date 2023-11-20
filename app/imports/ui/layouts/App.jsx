@@ -71,17 +71,6 @@ const ProtectedRoute = ({ children }) => {
   return isLogged ? children : <Navigate to="/signin" />;
 };
 
-const VendorProtectedRoute = ({ children }) => {
-  const isLogged = Meteor.userId() !== null;
-  if (!isLogged) {
-    return <Navigate to="/signin" />;
-  }
-  if (!ready) {
-    return <LoadingSpinner />;
-  }
-  const isAdmin = Roles.userIsInRole(Meteor.userId(), 'admin');
-  return (isLogged && isAdmin) ? children : <Navigate to="/notauthorized" />;
-};
 /**
  * AdminProtectedRoute
  * allows access for all permissions of user, vendor, and admin
