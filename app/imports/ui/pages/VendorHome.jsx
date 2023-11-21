@@ -3,7 +3,7 @@ import { Col, Container, Row } from 'react-bootstrap';
 
 /** Regular Users */
 const VendorHome = () => (
-  <Container fluid>
+  <Container id="vendorhome-page" fluid>
     <Row className="colorBlockBlack">
       <h1>VENDOR WELCOME GRAPHIC (TODO)</h1>
     </Row>

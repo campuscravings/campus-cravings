@@ -36,7 +36,7 @@ const ProfilePage = () => {
   return loading ? (
     <LoadingSpinner />
   ) : (
-    <Container className="py-3">
+    <Container id="profile-page" className="py-3">
       <Card className="text-center">
         <Card.Body className="p-4">
           <Card.Title><h1>My Profile</h1></Card.Title>
