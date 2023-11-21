@@ -28,7 +28,7 @@ const ListVendors = () => {
     hours: '10:00AM - 4:30PM', tags: ['Chinese', 'Fast-Food'], menu: ['Orange Chicken', 'Fried Rice'],
     logo: 'https://delmarhighlandstowncenter.com/wp-content/uploads/2020/09/DMHTC_Listing_Feature_PandaExpresslogo.jpg' }];
   return (ready ? (
-    <Container className="py-3">
+    <Container id="listvedors-page" className="py-3">
       <Row className="justify-content-center">
         <Col md={7}>
           <Col className="text-center">

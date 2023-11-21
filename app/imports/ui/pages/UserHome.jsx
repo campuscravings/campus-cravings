@@ -3,7 +3,7 @@ import { Col, Container, Row } from 'react-bootstrap';
 
 /** Regular Users */
 const UserHome = () => (
-  <Container fluid>
+  <Container id="userhome-page" fluid>
     <Row className="colorBlockBlack">
       <h1>USER WELCOME GRAPHIC (TODO)</h1>
     </Row>

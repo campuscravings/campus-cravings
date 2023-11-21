@@ -43,6 +43,8 @@
     "lint-fix": "eslint --quiet --fix --ext .jsx --ext .js ./imports && eslint --quiet --ext .js ./tests",
     "testcafe": "testcafe chrome tests/*.testcafe.js",
     "testcafe-single": "testcafe chrome tests/*.testcafe.js -t \"Test that signin and signout work\"",
+    "testcafe-user": "testcafe chrome tests/*.testcafe.js -t \"Test that user pages are displayed\"",
+    "testcafe-admin": "testcafe chrome tests/*.testcafe.js -t \"Test that admin pages are displayed\"",
     "testcafe-ci": "testcafe chrome:headless tests/*.testcafe.js -q --app \"meteor npm run start\"",
     "test-all": "meteor reset && meteor npm run lint && meteor npm run unimported && meteor npm run testcafe-ci",
     "unimported": "npx unimported"

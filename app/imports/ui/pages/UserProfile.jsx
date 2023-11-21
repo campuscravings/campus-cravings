@@ -86,7 +86,7 @@ const UserProfile = () => {
     }
   };
   return ready ? (
-    <Container className="py-3">
+    <Container id="userprofile-page" className="py-3">
       <Row className="justify-content-center">
         <Col xs={5}>
           <Col className="text-center"><h2>User Profile</h2></Col>
