@@ -95,18 +95,18 @@ const UserProfile = () => {
               <Card.Body>
                 <Row>
                   <Col xs={6}>
-                    <TextField name="name" showInlineError />
+                    <TextField id="userprofile-field-name" name="name" showInlineError />
                   </Col>
                   <Col xs={6}>
-                    <TextField name="image" showInlineError />
+                    <TextField id="userprofile-field-image" name="image" showInlineError />
                   </Col>
                 </Row>
                 <Row>
                   <Col xs={12}>
-                    <TextField name="bio" showInlineError />
+                    <TextField id="userprofile-field-bio" name="bio" showInlineError />
                   </Col>
                   <Col xs={12}>
-                    <SelectField name="foods" showInlineError multiple />
+                    <SelectField id="userprofile-field-foods" name="foods" showInlineError multiple />
                   </Col>
                 </Row>
                 <SubmitField value="Submit" />
