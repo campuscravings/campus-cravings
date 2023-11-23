@@ -33,6 +33,19 @@ const ProfilePage = () => {
     };
   }, []);
 
+  if (!profile) {
+    return (
+      <Container id="profile-page-DNE" className="py-3">
+        <Card className="text-center">
+          <Card.Body className="p-4">
+            <Card.Title><h1>Profile Not Found</h1></Card.Title>
+            <Link to="/userprofile">Create User Profile</Link>
+          </Card.Body>
+        </Card>
+      </Container>
+    );
+  }
+
   return loading ? (
     <LoadingSpinner />
   ) : (
