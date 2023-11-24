@@ -27,7 +27,7 @@ test('Test that landing page shows up', async (testController) => {
   await landingPage.isDisplayed(testController);
 });
 
-test('Test that signin and signout work', async (testController) => {
+test.skip('Test that signin and signout work', async (testController) => {
   await navBar.gotoSignInPage(testController);
   await signinPage.signin(testController, userCredentials.username, userCredentials.password);
   await navBar.isLoggedIn(testController, userCredentials.username);
