@@ -38,4 +38,4 @@ jobs:
         run: |
           meteor npm install
           meteor npm run lint
-          testcafe chromium:headless tests/*.testcafe.js
+          meteor npm run testcafe-ci
