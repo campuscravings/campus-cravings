@@ -1,6 +1,7 @@
 import { Meteor } from 'meteor/meteor';
 import { Stuffs } from '../../api/stuff/Stuff.js';
-import { Vendors } from '../../api/vendors/Vendors';
+import { Vendors } from '../../api/vendors/Vendors.js';
+import { Profiles } from '../../api/profiles/Profiles.js';
 
 /* eslint-disable no-console */
 
@@ -18,12 +19,25 @@ if (Stuffs.collection.find().count() === 0) {
   }
 }
 
+const addProfile = (profile) => {
+  console.log(`  Adding: ${profile.name} (${profile.owner})`);
+  Profiles.collection.insert(profile);
+};
+
+// Initialize the ProfilesCollection if empty.
+if (Profiles.collection.find().count() === 0) {
+  if (Meteor.settings.defaultProfiles) {
+    console.log('Creating default profiles.');
+    Meteor.settings.defaultProfiles.forEach(profile => addProfile(profile));
+  }
+}
+
 const addVendor = (vendor) => {
   console.log(`  Adding: ${vendor.name} (${vendor.owner})`);
   Vendors.collection.insert(vendor);
 };
 
-// Initialize the StuffsCollection if empty.
+// Initialize the VendorsCollection if empty.
 if (Vendors.collection.find().count() === 0) {
   if (Meteor.settings.defaultVendors) {
     console.log('Creating default vendors.');

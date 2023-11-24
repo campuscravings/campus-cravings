@@ -43,7 +43,7 @@ const App = () => {
           <Route path="/signout" element={<SignOut />} />
           <Route path="/userhome" element={<ProtectedRoute><UserHome /></ProtectedRoute>} />
           <Route path="/home" element={<ProtectedRoute><Landing /></ProtectedRoute>} />
-          <Route path="/vendorhome" element={<ProtectedRoute><VendorHome /></ProtectedRoute>} />
+          <Route path="/vendorhome" element={<VendorProtectedRoute><VendorHome /></VendorProtectedRoute>} />
           <Route path="/list" element={<ProtectedRoute><ListVendors /></ProtectedRoute>} />
           <Route path="/add" element={<ProtectedRoute><AddStuff /></ProtectedRoute>} />
           <Route path="/edit/:_id" element={<ProtectedRoute><EditStuff /></ProtectedRoute>} />
@@ -71,9 +71,20 @@ const ProtectedRoute = ({ children }) => {
   return isLogged ? children : <Navigate to="/signin" />;
 };
 
+const VendorProtectedRoute = ({ ready, children }) => {
+  const isLogged = Meteor.userId() !== null;
+  if (!isLogged) {
+    return <Navigate to="/signin" />;
+  }
+  if (!ready) {
+    return <LoadingSpinner />;
+  }
+  const isVendor = Roles.userIsInRole(Meteor.userId(), 'vendor');
+  return (isLogged && isVendor) ? children : <Navigate to="/notauthorized" />;
+};
+
 /**
- * AdminProtectedRoute
- * allows access for all permissions of user, vendor, and admin
+ * AdminProtectedRoute: allows access for all permissions of user, vendor, and admin
  */
 const AdminProtectedRoute = ({ ready, children }) => {
   const isLogged = Meteor.userId() !== null;
@@ -93,6 +104,17 @@ ProtectedRoute.propTypes = {
 };
 
 ProtectedRoute.defaultProps = {
+  children: <Landing />,
+};
+
+// Require a component and location to be passed to each VendorProtectedRoute.
+VendorProtectedRoute.propTypes = {
+  ready: PropTypes.bool,
+  children: PropTypes.oneOfType([PropTypes.object, PropTypes.func]),
+};
+
+VendorProtectedRoute.defaultProps = {
+  ready: false,
   children: <Landing />,
 };
 
