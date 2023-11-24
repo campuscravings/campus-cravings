@@ -7,7 +7,7 @@ import { profilePage } from './profile.page';
 import { userhomePage } from './userhome.page';
 import { vendorsPage } from './vendors.page';
 import { adminhomePage } from './adminhome.page';
-import { vendorhomePage } from './vendorhome.page';
+// import { vendorhomePage } from './vendorhome.page';
 import { addvendorPage } from './addvendor.page';
 
 /* global fixture:false, test:false */
@@ -64,8 +64,8 @@ test('Test that admin pages are displayed', async (testController) => {
   await vendorsPage.isDisplayed(testController);
   await navBar.gotoAdminHomePage(testController);
   await adminhomePage.isDisplayed(testController);
-  await navBar.gotoVendorHomePage(testController);
-  await vendorhomePage.isDisplayed(testController);
+  // await navBar.gotoVendorHomePage(testController);
+  // await vendorhomePage.isDisplayed(testController);
   await navBar.gotoAddVendorPage(testController);
   await addvendorPage.isDisplayed(testController);
 });

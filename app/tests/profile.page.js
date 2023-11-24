@@ -31,7 +31,6 @@ class PofilePage {
       .expect(this.profileBio.innerText).contains(expectedProfileData.bio, 'Profile bio matches')
       .expect(this.profileFoods.innerText)
       .contains(expectedProfileData.foods, 'Profile foods match');
-    // Add additional assertions for other profile data if needed
   }
 }
 
