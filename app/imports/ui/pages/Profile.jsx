@@ -33,6 +33,19 @@ const ProfilePage = () => {
     };
   }, []);
 
+  if (!profile) {
+    return (
+      <Container id="profile-page" className="py-3">
+        <Card className="text-center">
+          <Card.Body className="p-4">
+            <Card.Title><h1>Profile Not Found</h1></Card.Title>
+            <Link to="/userprofile">Create User Profile</Link>
+          </Card.Body>
+        </Card>
+      </Container>
+    );
+  }
+
   return loading ? (
     <LoadingSpinner />
   ) : (
@@ -43,6 +56,7 @@ const ProfilePage = () => {
           <Row>
             <Col xs={12} className="text-right mb-4">
               <Image
+                id="profile-image"
                 src={profile.image}
                 width={300}
                 roundedCircle
@@ -52,20 +66,20 @@ const ProfilePage = () => {
           </Row>
           <Row>
             <Col xs={12}>
-              <h3 className="text-center mb-4">{profile.name}</h3>
+              <h3 id="profile-name" className="text-center mb-4">{profile.name}</h3>
             </Col>
           </Row>
           <Row>
             <Col xs={6}>
               <div className="border p-3">
                 <h5>Bio:</h5>
-                <p className="mt-3">{profile.bio}</p>
+                <p id="profile-bio" className="mt-3">{profile.bio}</p>
               </div>
             </Col>
             <Col xs={6}>
               <div className="border p-3">
                 <h5>Favorite Foods:</h5>
-                <p>{profile.foods.join(', ')}</p>
+                <p id="profile-foods">{profile.foods.join(', ')}</p>
               </div>
             </Col>
           </Row>

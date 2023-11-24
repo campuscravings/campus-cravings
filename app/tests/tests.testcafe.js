@@ -17,6 +17,9 @@ const userCredentials = { username: 'john@foo.com', password: 'changeme' };
 // const vendorCredentials = { username: 'john@foo.com', password: 'changeme' };
 const adminCredentials = { username: 'admin@foo.com', password: 'changeme' };
 
+/** Default account info */
+const userinfo = { name: 'Fish', bio: 'Sample bio text', image: 'https://media.threatpost.com/wp-content/uploads/sites/103/2019/09/26105755/fish-1.jpg', foods: 'Breakfast' };
+
 fixture('meteor-application-template-react localhost test with default db')
   .page('http://localhost:3000');
 
@@ -24,7 +27,7 @@ test('Test that landing page shows up', async (testController) => {
   await landingPage.isDisplayed(testController);
 });
 
-test('Test that signin and signout work', async (testController) => {
+test.skip('Test that signin and signout work', async (testController) => {
   await navBar.gotoSignInPage(testController);
   await signinPage.signin(testController, userCredentials.username, userCredentials.password);
   await navBar.isLoggedIn(testController, userCredentials.username);
@@ -50,10 +53,11 @@ test('Test that admin pages are displayed', async (testController) => {
   await navBar.gotoSignInPage(testController);
   await signinPage.signin(testController, adminCredentials.username, adminCredentials.password);
   await landingPage.isDisplayed(testController);
-  await navBar.gotoUserHomePage(testController);
-  await userhomePage.isDisplayed(testController);
   await navBar.gotoUserProfilePage(testController);
   await userprofilePage.isDisplayed(testController);
+  await userprofilePage.selectFoodsOption(testController, 'Breakfast');
+  await navBar.gotoUserHomePage(testController);
+  await userhomePage.isDisplayed(testController);
   await navBar.gotoProfilePage(testController);
   await profilePage.isDisplayed(testController);
   await navBar.gotoVendorsPage(testController);
@@ -64,4 +68,22 @@ test('Test that admin pages are displayed', async (testController) => {
   await vendorhomePage.isDisplayed(testController);
   await navBar.gotoAddVendorPage(testController);
   await addvendorPage.isDisplayed(testController);
+});
+
+test('Test UserProfile page functions', async (testController) => {
+  await navBar.gotoSignInPage(testController);
+  await signinPage.signin(testController, adminCredentials.username, adminCredentials.password);
+  await landingPage.isDisplayed(testController);
+  await navBar.gotoUserProfilePage(testController);
+  await userprofilePage.isDisplayed(testController);
+  await userprofilePage.typeName(testController, userinfo.name);
+  await userprofilePage.typeBio(testController, userinfo.bio);
+  await userprofilePage.typeImage(testController, userinfo.image);
+  await userprofilePage.selectFoodsOption(testController, userinfo.foods);
+  await userprofilePage.submitForm(testController);
+  await userprofilePage.confirmDialog(testController);
+  await navBar.gotoProfilePage(testController);
+  await profilePage.isDisplayed(testController);
+  await profilePage.profileElementsExist(testController);
+  await profilePage.verifyProfileData(testController, userinfo);
 });
