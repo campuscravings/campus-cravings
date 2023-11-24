@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Meteor } from 'meteor/meteor';
-import { Tracker } from 'meteor/tracker'; // Import Tracker from Meteor
+import { Tracker } from 'meteor/tracker';
 import { Card, Container, Row, Col, Image } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { Profiles } from '../../api/profiles/Profiles';
