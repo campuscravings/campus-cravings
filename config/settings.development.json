@@ -16,6 +16,11 @@
     { "name": "Boogie Board", "quantity": 2, "owner": "admin@foo.com", "condition": "excellent" }
   ],
 
+  "defaultMenuItems": [
+    { "name": "Item 1", "vendor": "Vendor A", "description": "Description 1", "cost": 10, "vegan": true, "available": false,"calories": 75  },
+    { "name": "Item 2", "vendor": "Vendor B", "description": "Description 2", "cost": 15, "vegan": false, "available": true, "calories": 75 }
+  ],
+
   "defaultVendors": [
     {
       "name": "Panda Express", "address": "2560 McCarthy Mall Paradise Palms, Honolulu, HI 96822",

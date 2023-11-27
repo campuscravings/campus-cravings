@@ -23,6 +23,8 @@ import Profile from '../pages/Profile';
 import VendorHome from '../pages/VendorHome';
 import AdminHome from '../pages/AdminHome';
 import AddVendor from '../pages/AddVendor';
+import AddMenuItem from '../pages/AddMenuItem';
+import Menu from '../pages/Menu';
 
 /** Top-level layout component for this application. Called in imports/startup/client/startup.jsx. */
 const App = () => {
@@ -54,6 +56,8 @@ const App = () => {
           <Route path="*" element={<NotFound />} />
           <Route path="/userprofile" element={<ProtectedRoute><UserProfile /></ProtectedRoute>} />
           <Route path="/profile" element={<ProtectedRoute><Profile /></ProtectedRoute>} />
+          <Route path="/addmenuitem" element={<ProtectedRoute><AddMenuItem /></ProtectedRoute>} />
+          <Route path="/menu/:vendorName" element={<ProtectedRoute><Menu /></ProtectedRoute>} />
         </Routes>
         <Footer />
       </div>
