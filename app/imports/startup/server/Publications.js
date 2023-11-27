@@ -3,6 +3,7 @@ import { Roles } from 'meteor/alanning:roles';
 import { Stuffs } from '../../api/stuff/Stuff';
 import { Profiles } from '../../api/profiles/Profiles';
 import { Vendors } from '../../api/vendors/Vendors';
+import { MenuItems } from '../../api/menuItem/MenuItem';
 
 // User-level publication.
 // If logged in, then publish documents owned by this user. Otherwise, publish nothing.
@@ -79,11 +80,16 @@ Meteor.publish(Vendors.adminPublicationName, function () {
   return this.ready();
 });
 
-// alanning:roles publication
-// Recommended code to publish roles for each user.
 Meteor.publish(null, function () {
   if (this.userId) {
     return Meteor.roleAssignment.find({ 'user._id': this.userId });
+  }
+  return this.ready();
+});
+
+Meteor.publish(MenuItems.publicationName, function () {
+  if (this.userId) {
+    return MenuItems.collection.find();
   }
   return this.ready();
 });

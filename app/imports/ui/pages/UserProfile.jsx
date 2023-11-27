@@ -31,7 +31,6 @@ const formSchema = new SimpleSchema({
 
 const bridge = new SimpleSchema2Bridge(formSchema);
 
-/* Renders the EditStuff page for editing a single document. */
 const UserProfile = () => {
   const { _id } = useParams();
 
@@ -50,24 +49,24 @@ const UserProfile = () => {
     const { name, bio, image, foods } = data;
     const loggedInUser = Meteor.user();
     const user = loggedInUser.username;
-    console.log('loggedInUser:', loggedInUser);
-    console.log('user:', user);
+    // console.log('loggedInUser:', loggedInUser);
+    // console.log('user:', user);
 
     const existingProfile = Profiles.collection.findOne({ user });
-    console.log('existingProfile:', existingProfile);
+    // console.log('existingProfile:', existingProfile);
 
     const profileData = { name, bio, image, foods, user };
 
     if (existingProfile) {
       Profiles.collection.update(
-        { _id: existingProfile._id }, // Specify the document by its _id
+        { _id: existingProfile._id },
         { $set: profileData },
         (error) => {
           if (error) {
-            console.error('Update error:', error);
+            // console.error('Update error:', error);
             swal('Error', error.message, 'error');
           } else {
-            console.log('Profile updated successfully');
+            // console.log('Profile updated successfully');
             swal('Success', 'Profile updated successfully', 'success');
           }
         },
@@ -76,10 +75,10 @@ const UserProfile = () => {
       // For a new profile, perform an insert
       Profiles.collection.insert(profileData, (error) => {
         if (error) {
-          console.error('Insert error:', error);
+          // console.error('Insert error:', error);
           swal('Error', error.message, 'error');
         } else {
-          console.log('New profile created successfully');
+          // console.log('New profile created successfully');
           swal('Success', 'New profile created successfully', 'success');
         }
       });
