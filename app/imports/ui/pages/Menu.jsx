@@ -3,7 +3,7 @@ import { useTracker } from 'meteor/react-meteor-data';
 import { Card, Col, Row, Image, Container } from 'react-bootstrap';
 import { Meteor } from 'meteor/meteor';
 import { useParams } from 'react-router-dom';
-import { MenuItems } from '../../api/menuItem/MenuItem';
+import { MenuItems } from '../../api/menuItems/MenuItems';
 import LoadingSpinner from '../components/LoadingSpinner';
 
 const Menu = () => {

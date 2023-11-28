@@ -8,7 +8,7 @@ import { useTracker } from 'meteor/react-meteor-data';
 import SimpleSchema from 'simpl-schema';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import { Roles } from 'meteor/alanning:roles';
-import { MenuItems } from '../../api/menuItem/MenuItem';
+import { MenuItems } from '../../api/menuItems/MenuItems';
 import LoadingSpinner from '../components/LoadingSpinner';
 
 const formSchema = new SimpleSchema({

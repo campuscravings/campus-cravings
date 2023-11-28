@@ -30,10 +30,12 @@ body {
 .colorBlockGreen {
   background-color: rgb(55, 101, 81);
   color: white;
+  height: 500px;
 }
 
 .colorBlockWhite {
   color: rgb(55, 101, 81);
+  height: 500px;
 }
 
 .colorBlockBlack {
@@ -55,4 +57,10 @@ body {
 .customNav {
   background-color: rgb(55, 101, 81);
   color: white;
+}
+
+.ckH {
+  color: rgb(55, 101, 81);
+  font-size: 50px;
+  text-align: center;
 }

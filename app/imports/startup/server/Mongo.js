@@ -2,7 +2,7 @@ import { Meteor } from 'meteor/meteor';
 import { Stuffs } from '../../api/stuff/Stuff.js';
 import { Vendors } from '../../api/vendors/Vendors.js';
 import { Profiles } from '../../api/profiles/Profiles.js';
-import { MenuItems } from '../../api/menuItem/MenuItem';
+import { MenuItems } from '../../api/menuItems/MenuItems';
 
 /* eslint-disable no-console */
 
