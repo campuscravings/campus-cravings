@@ -8,11 +8,16 @@ class PofilePage {
     this.profileName = Selector('#profile-name');
     this.profileBio = Selector('#profile-bio');
     this.profileFoods = Selector('#profile-foods');
+    this.profileCreate = Selector('#create-user-profile-link');
   }
 
   /** Asserts that this page is currently displayed. */
   async isDisplayed(testController) {
     await testController.expect(this.pageSelector.exists).ok();
+  }
+
+  async typeCreateProfile(testController) {
+    await testController.click(this.profileCreate);
   }
 
   async profileElementsExist(testController) {

@@ -39,7 +39,7 @@ const ProfilePage = () => {
         <Card className="text-center">
           <Card.Body className="p-4">
             <Card.Title><h1>Profile Not Found</h1></Card.Title>
-            <Link to="/userprofile">Create User Profile</Link>
+            <Link id="create-user-profile-link" to="/userprofile">Create User Profile</Link>
           </Card.Body>
         </Card>
       </Container>
