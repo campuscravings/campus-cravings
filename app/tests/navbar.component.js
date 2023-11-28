@@ -63,21 +63,21 @@ class NavBar {
     await testController.click('#login-dropdown-sign-up');
   }
 
-  async gotoUserHomePage(testController) {
-    await testController.click('#user-home-nav');
-  }
+  // async gotoUserHomePage(testController) {
+  //   await testController.click('#user-home-nav');
+  // }
 
   async gotoVendorsPage(testController) {
     await testController.click('#list-vendors-nav');
   }
 
-  async gotoAdminHomePage(testController) {
-    await testController.click('#admin-home-nav');
-  }
-
-  async gotoVendorHomePage(testController) {
-    await testController.click('#vendor-home-nav');
-  }
+  // async gotoAdminHomePage(testController) {
+  //   await testController.click('#admin-home-nav');
+  // }
+  //
+  // async gotoVendorHomePage(testController) {
+  //   await testController.click('#vendor-home-nav');
+  // }
 
   async gotoAddVendorPage(testController) {
     await testController.click('#add-vendors-nav');

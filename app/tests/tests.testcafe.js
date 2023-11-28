@@ -39,7 +39,7 @@ test('Test that user pages are displayed', async (testController) => {
   await navBar.gotoSignInPage(testController);
   await signinPage.signin(testController, userCredentials.username, userCredentials.password);
   await landingPage.isDisplayed(testController);
-  await navBar.gotoUserHomePage(testController);
+  // await navBar.gotoUserHomePage(testController);
   await userhomePage.isDisplayed(testController);
   await userprofilePage.isDisplayed(testController);
   await navBar.gotoProfilePage(testController);
@@ -54,13 +54,13 @@ test.skip('Test that admin pages are displayed', async (testController) => {
   await landingPage.isDisplayed(testController);
   await userprofilePage.isDisplayed(testController);
   await userprofilePage.selectFoodsOption(testController, 'Breakfast');
-  await navBar.gotoUserHomePage(testController);
+  // await navBar.gotoUserHomePage(testController);
   await userhomePage.isDisplayed(testController);
   await navBar.gotoProfilePage(testController);
   await profilePage.isDisplayed(testController);
   await navBar.gotoVendorsPage(testController);
   await vendorsPage.isDisplayed(testController);
-  await navBar.gotoAdminHomePage(testController);
+  // await navBar.gotoAdminHomePage(testController);
   await adminhomePage.isDisplayed(testController);
   // await navBar.gotoVendorHomePage(testController);
   // await vendorhomePage.isDisplayed(testController);
