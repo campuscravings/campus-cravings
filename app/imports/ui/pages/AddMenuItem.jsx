@@ -101,7 +101,7 @@ const AddMenuItem = () => {
 
   };
   return ready ? (
-    <Container id="add-menu-item" className="py-3">
+    <Container id="add-menu-item-page" className="py-3">
       <Row className="justify-content-center">
         <Col xs={5}>
           <Col className="text-center">
@@ -136,7 +136,7 @@ const AddMenuItem = () => {
                     <NumField id="add-menu-item-field-calories" name="calories" showInlineError />
                   </Col>
                 </Row>
-                <SubmitField value="Add Item" />
+                <SubmitField id="add-menu-item-submit" />
                 <ErrorsField />
               </Card.Body>
             </Card>
