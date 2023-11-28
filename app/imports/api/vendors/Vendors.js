@@ -16,8 +16,6 @@ class VendorsCollection {
       address: String,
       description: String,
       hours: String,
-      tags: [String],
-      menu: [String],
       logo: String,
       owner: String,
     });

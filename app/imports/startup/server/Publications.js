@@ -37,7 +37,7 @@ Meteor.publish(Stuffs.adminPublicationName, function () {
 Meteor.publish(Profiles.userPublicationName, function () {
   if (this.userId) {
     const username = Meteor.users.findOne(this.userId).username;
-    return Profiles.collection.find({ user: username });
+    return Profiles.collection.find({ owner: username });
   }
   return this.ready();
 });
@@ -60,7 +60,7 @@ Meteor.publish(Profiles.adminPublicationName, function () {
 Meteor.publish(Vendors.userPublicationName, function () {
   if (this.userId) {
     const username = Meteor.users.findOne(this.userId).username;
-    return Vendors.collection.find({ user: username });
+    return Vendors.collection.find({ owner: username });
   }
   return this.ready();
 });
