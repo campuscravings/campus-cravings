@@ -41,7 +41,6 @@ test('Test that user pages are displayed', async (testController) => {
   await landingPage.isDisplayed(testController);
   await navBar.gotoUserHomePage(testController);
   await userhomePage.isDisplayed(testController);
-  await navBar.gotoUserProfilePage(testController);
   await userprofilePage.isDisplayed(testController);
   await navBar.gotoProfilePage(testController);
   await profilePage.isDisplayed(testController);
@@ -53,7 +52,6 @@ test('Test that admin pages are displayed', async (testController) => {
   await navBar.gotoSignInPage(testController);
   await signinPage.signin(testController, adminCredentials.username, adminCredentials.password);
   await landingPage.isDisplayed(testController);
-  await navBar.gotoUserProfilePage(testController);
   await userprofilePage.isDisplayed(testController);
   await userprofilePage.selectFoodsOption(testController, 'Breakfast');
   await navBar.gotoUserHomePage(testController);
