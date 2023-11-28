@@ -34,6 +34,23 @@ const NavBar = () => {
     );
   }
 
+  function routeListVendor() {
+    if (Roles.userIsInRole(Meteor.userId(), 'vendor')) {
+      return ([
+        <Nav.Link id="add-menu-item-nav" as={NavLink} to="/addmenuitem" key="addMI">Add Menu Item</Nav.Link>,
+      ]);
+    }
+    if (Roles.userIsInRole(Meteor.userId(), 'admin')) {
+      return ([
+        <Nav.Link id="list-vendors-admin-nav" as={NavLink} to="/admin" key="listVA">(Admin)Vendors</Nav.Link>,
+        <Nav.Link id="add-vendors-nav" as={NavLink} to="/addvendor" key="addV">Add Vendor</Nav.Link>,
+      ]);
+    }
+    return ([
+      <Nav.Link id="list-vendors-nav" as={NavLink} to="/list" key="listV">List Vendors</Nav.Link>,
+    ]);
+  }
+
   return (
     <Navbar className="customNav" expand="lg">
       <Container>
@@ -41,20 +58,7 @@ const NavBar = () => {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className=" me-auto justify-content-start">
-            {currentUser ? ([
-              <Nav.Link id="list-vendors-nav" as={NavLink} to="/list" key="listV">List Vendors</Nav.Link>,
-            ]) : ''}
-            {Roles.userIsInRole(Meteor.userId(), 'vendor') ? ([
-              <Nav.Link id="add-menu-item-nav" as={NavLink} to="/addmenuitem" key="addMI">Add Menu Item</Nav.Link>,
-              <Nav.Link id="vendor-home-nav" as={NavLink} to="/vendorhome" key="vendorhome">Vendor Home</Nav.Link>,
-              <Nav.Link id="add-menu-item-nav" as={NavLink} to="/addmenuitem" key="addmenuitem">Add Menu Item</Nav.Link>,
-
-            ]) : ''}
-            {Roles.userIsInRole(Meteor.userId(), 'admin') ? ([
-              <Nav.Link id="add-vendors-nav" as={NavLink} to="/addvendor" key="addV">Add Vendor</Nav.Link>,
-              <Nav.Link id="list-vendors-admin-nav" as={NavLink} to="/admin" key="vendors">(Admin)Vendors</Nav.Link>,
-              <Nav.Link id="admin-home-nav" as={NavLink} to="/adminhome" key="adminhome">Admin Home</Nav.Link>,
-            ]) : ''}
+            {routeListVendor()}
           </Nav>
           <Nav className="justify-content-end">
             {currentUser === '' ? (
