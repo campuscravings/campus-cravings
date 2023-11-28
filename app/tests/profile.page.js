@@ -1,6 +1,6 @@
 import { Selector } from 'testcafe';
 
-class PofilePage {
+class ProfilePage {
   constructor() {
     this.pageId = '#profile-page';
     this.pageSelector = Selector(this.pageId);
@@ -39,4 +39,4 @@ class PofilePage {
   }
 }
 
-export const profilePage = new PofilePage();
+export const profilePage = new ProfilePage();
