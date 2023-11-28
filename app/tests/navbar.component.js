@@ -82,6 +82,10 @@ class NavBar {
   async gotoAddVendorPage(testController) {
     await testController.click('#add-vendors-nav');
   }
+
+  async gotoAddMenuItemPage(testController) {
+    await testController.click('#add-menu-item-nav');
+  }
 }
 
 export const navBar = new NavBar();

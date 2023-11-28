@@ -39,7 +39,7 @@ const Menu = () => {
                     {item.vegan && (
                       <Image
                         src="/images/vegan_ICON.png"
-                        id="Vegan Icon"
+                        id="vegan-icon"
                         style={{ position: 'absolute', top: '5px', right: '5px', maxWidth: '25px' }}
                       />
                     )}
