@@ -7,7 +7,7 @@ const Landing = () => (
     <Row className="align-middel text-left py-3">
 
       <Col className="d-flex flex-column justify-content-center px-5">
-        <h1>Feelin' Hungry? We Got You</h1>
+        <h1>Feelin&pos; Hungry? We Got You</h1>
       </Col>
       <Col xs={6} className="d-flex flex-column justify-content-center">
         <h3>Sign in to Browse Menus and Satisfy Cravings</h3>
