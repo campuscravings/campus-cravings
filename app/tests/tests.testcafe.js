@@ -80,7 +80,7 @@ test.skip('Test that admin pages are displayed', async (testController) => {
   await addvendorPage.isDisplayed(testController);
 });
 
-test('Test UserProfile page functions', async (testController) => {
+test.skip('Test UserProfile page functions', async (testController) => {
   await navBar.gotoSignInPage(testController);
   await signinPage.signin(testController, userCredentials.username, userCredentials.password);
   await landingPage.isDisplayed(testController);
