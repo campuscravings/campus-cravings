@@ -7,8 +7,6 @@ import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-d
 import Footer from '../components/Footer';
 import Landing from '../pages/Landing';
 import ListVendors from '../pages/ListVendors';
-import AddStuff from '../pages/AddStuff';
-import EditStuff from '../pages/EditStuff';
 import NotFound from '../pages/NotFound';
 import SignUp from '../pages/SignUp';
 import SignOut from '../pages/SignOut';
@@ -47,8 +45,6 @@ const App = () => {
           <Route path="/home" element={<ProtectedRoute><Landing /></ProtectedRoute>} />
           <Route path="/vendorhome" element={<VendorProtectedRoute ready={ready}><VendorHome /></VendorProtectedRoute>} />
           <Route path="/list" element={<ProtectedRoute><ListVendors /></ProtectedRoute>} />
-          <Route path="/add" element={<ProtectedRoute><AddStuff /></ProtectedRoute>} />
-          <Route path="/edit/:_id" element={<ProtectedRoute><EditStuff /></ProtectedRoute>} />
           <Route path="/admin" element={<AdminProtectedRoute ready={ready}><ListVendorsAdmin /></AdminProtectedRoute>} />
           <Route path="/adminhome" element={<AdminProtectedRoute ready={ready}><AdminHome /></AdminProtectedRoute>} />
           <Route path="/addvendor" element={<AdminProtectedRoute ready={ready}><AddVendor /></AdminProtectedRoute>} />

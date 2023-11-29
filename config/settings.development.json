@@ -14,13 +14,6 @@
     { "email": "john@foo.com", "password": "changeme" }
   ],
 
-  "defaultData": [
-    { "name": "Basket", "quantity": 3, "owner": "john@foo.com", "condition": "excellent" },
-    { "name": "Bicycle", "quantity": 2, "owner": "john@foo.com", "condition": "poor" },
-    { "name": "Banana", "quantity": 2, "owner": "admin@foo.com", "condition": "good" },
-    { "name": "Boogie Board", "quantity": 2, "owner": "admin@foo.com", "condition": "excellent" }
-  ],
-
   "defaultMenuItems": [
     { "name": "Item 1", "vendor": "Vendor A", "description": "Description 1", "cost": 10, "vegan": true, "available": false,"calories": 75  },
     { "name": "Item 2", "vendor": "Vendor B", "description": "Description 2", "cost": 15, "vegan": false, "available": true, "calories": 75 }
