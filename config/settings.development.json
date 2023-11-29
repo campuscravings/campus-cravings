@@ -6,6 +6,7 @@
   "defaultAccounts": [
     { "email": "admin@foo.com", "password": "changeme", "role": "admin" },
     { "email": "vendor@foo.com", "password": "changeme", "role": "vendor"},
+    { "email": "pandaexpress@foo.com", "password": "changeme", "role": "vendor"},
     { "email": "callejo8123@hawaii.edu", "password": "changeme", "role": "admin" },
     { "email": "codykau123@hawaii.edu", "password": "changeme", "role": "admin" },
     { "email": "bueche123@hawaii.edu", "password": "changeme", "role": "admin" },
@@ -27,11 +28,18 @@
 
   "defaultVendors": [
     {
+      "name": "Panda Express Test", "address": "2560 McCarthy Mall Paradise Palms, Honolulu, HI 96822",
+      "description": "Panda Express is an American fast food restaurant chain that specializes in American Chinese cuisine.",
+      "hours": "10:00AM - 4:30PM",
+      "logo": "https://delmarhighlandstowncenter.com/wp-content/uploads/2020/09/DMHTC_Listing_Feature_PandaExpresslogo.jpg",
+      "owner": "vendor@foo.com"
+    },
+    {
       "name": "Panda Express", "address": "2560 McCarthy Mall Paradise Palms, Honolulu, HI 96822",
       "description": "Panda Express is an American fast food restaurant chain that specializes in American Chinese cuisine.",
       "hours": "10:00AM - 4:30PM",
       "logo": "https://delmarhighlandstowncenter.com/wp-content/uploads/2020/09/DMHTC_Listing_Feature_PandaExpresslogo.jpg",
-      "owner": "john@foo.com"
+      "owner": "pandaexpress@foo.com"
     }
   ]
 

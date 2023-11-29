@@ -3,25 +3,30 @@
 
 /* Set up some CSS variables to theme the application. */
 :root {
-  --matr-navbar-bg: rgb(55, 101, 81);
-  --matr-navbar-bg-rgb: rgb(55, 101, 81);
+  --cc-navbar-bg: rgb(55, 101, 81);
+  --cc-navbar-bg-rgb: rgb(55, 101, 81);
+  --cc-bs-navbar-color: white;
 }
 
 /* Change bootstrap variable values.
  See https://getbootstrap.com/docs/5.2/customize/css-variables/
  */
 body {
-  --bs-light-rgb: var(--matr-navbar-bg-rgb);
+  --bs-light-rgb: var(--cc-navbar-bg-rgb);
+}
+
+.nav-link {
+  --bs-nav-link-color: var(--cc-bs-navbar-color);
 }
 
 /* Set the alert background on the signin and signup pages. */
 #signin-page .alert-light, #signup-page .alert-light {
-  --bs-alert-bg: var(--matr-navbar-bg);
+  --bs-alert-bg: var(--cc-navbar-bg);
 }
 
 /* Define custom styles */
 .gray-background {
-  background-color: var(--matr-navbar-bg);
+  background-color: var(--cc-navbar-bg);
   color: var(--bs-dark);
   padding-top: 10px;
   padding-bottom: 20px;
@@ -30,12 +35,16 @@ body {
 .colorBlockGreen {
   background-color: rgb(55, 101, 81);
   color: white;
-  height: 500px;
+  border-color: white;
+  border-style: solid;
+  border-width: 10px;
+  padding-top: 20px;
+  padding-bottom: 40px;
 }
 
 .colorBlockWhite {
   color: rgb(55, 101, 81);
-  height: 500px;
+  background-color: white;
 }
 
 .colorBlockBlack {
