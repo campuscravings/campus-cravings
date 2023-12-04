@@ -29,7 +29,7 @@ const VendorHome = () => {
   if (menuItems.length === 0 && vendors.length === 0) {
     return (ready ? (
       <Container id="vendorhome-page" fluid>
-        <div className="ckH">VENDOR NAME</div>
+        <div className="ckH">{vendors[0].name}</div>
         <Image
           fluid
           src="../../images/paradise-palms.jpeg"
@@ -47,7 +47,7 @@ const VendorHome = () => {
   if (menuItems.length === 0) {
     return (ready ? (
       <Container id="vendorhome-page" fluid>
-        <div className="ckH">VENDOR NAME</div>
+        <div className="ckH">{vendors[0].name}</div>
         <Image
           fluid
           src="../../images/paradise-palms.jpeg"
@@ -82,13 +82,13 @@ const VendorHome = () => {
   // if all collections are available
   return (ready ? (
     <Container id="vendorhome-page" fluid>
-      <div className="ckH">VENDOR NAME</div>
+      <div className="ckH">{vendors[0].name}</div>
       <Image
         fluid
         src="../../images/paradise-palms.jpeg"
       />
-      <Row xs={4} md={6} lg={8} className="g-4">
-        <Col className="colorBlockGreen">
+      <Row xs={4} md={6} lg={8} className="colorBlockGreen">
+        <Col>
           {menuItems.map((menuItem, index) => (<Col className="py-3" key={index}><MenuItem menuItem={menuItem} /></Col>))}
         </Col>
       </Row>
