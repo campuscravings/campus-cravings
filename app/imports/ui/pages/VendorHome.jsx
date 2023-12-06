@@ -88,9 +88,7 @@ const VendorHome = () => {
         src="../../images/paradise-palms.jpeg"
       />
       <Row xs={4} md={6} lg={8} className="colorBlockGreen">
-        <Col>
-          {menuItems.map((menuItem, index) => (<Col className="py-3" key={index}><MenuItem menuItem={menuItem} /></Col>))}
-        </Col>
+        {menuItems.map((menuItem, index) => (<Col className="py-3" key={index}><MenuItem menuItem={menuItem} /></Col>))}
       </Row>
     </Container>
   ) : <LoadingSpinner />);
