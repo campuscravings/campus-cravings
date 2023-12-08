@@ -46,7 +46,7 @@ const App = () => {
           <Route path="/userhome" element={<ProtectedRoute><UserHome /></ProtectedRoute>} />
           <Route path="/home" element={<ProtectedRoute><Landing /></ProtectedRoute>} />
           <Route path="/vendorhome" element={<VendorProtectedRoute ready={ready}><VendorHome /></VendorProtectedRoute>} />
-          <Route path="/list" element={<ProtectedRoute><ListVendors /></ProtectedRoute>} />
+          <Route path="/list" element={<ListVendors />} />
           <Route path="/add" element={<ProtectedRoute><AddStuff /></ProtectedRoute>} />
           <Route path="/edit/:_id" element={<ProtectedRoute><EditStuff /></ProtectedRoute>} />
           <Route path="/admin" element={<AdminProtectedRoute ready={ready}><ListVendorsAdmin /></AdminProtectedRoute>} />
@@ -57,7 +57,7 @@ const App = () => {
           <Route path="/userprofile" element={<ProtectedRoute><UserProfile /></ProtectedRoute>} />
           <Route path="/profile" element={<ProtectedRoute><Profile /></ProtectedRoute>} />
           <Route path="/addmenuitem" element={<ProtectedRoute><AddMenuItem /></ProtectedRoute>} />
-          <Route path="/menu/:vendorName" element={<ProtectedRoute><Menu /></ProtectedRoute>} />
+          <Route path="/menu/:vendorName" element={<Menu />} />
         </Routes>
         <Footer />
       </div>
