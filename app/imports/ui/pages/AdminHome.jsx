@@ -55,49 +55,51 @@ const AdminHome = () => {
         <Col className="vendorBlock py-2">
           <h2>Vendor Approval</h2>
           <Container className="vendorBlock py-2">
-            <Form>
-              <Form.Group className="mb-3" controlId="formApproveDeny">
-                <Row>
-                  <Col className="col-8 mt-2">
-                    <Form.Label>VENDOR NAME</Form.Label>
-                  </Col>
-                  <Col className="col-2">
-                    <Button
-                      variant="success"
-                      type="submit"
-                      onClick={() => {
-                        Meteor.users.update(_id, {
-                          $set: {
-                            profile: {
-                              status: 'approved',
+            { Meteor.users.find({ profile: { status: 'pending' } }).fetch().map(user => (
+              <Form>
+                <Form.Group className="mb-3" controlId="formApproveDeny">
+                  <Row>
+                    <Col className="col-8 mt-2">
+                      <Form.Label>VENDOR NAME</Form.Label>
+                    </Col>
+                    <Col className="col-2">
+                      <Button
+                        variant="success"
+                        type="submit"
+                        onClick={() => {
+                          Meteor.users.update(user, {
+                            $set: {
+                              profile: {
+                                status: 'approved',
+                              },
                             },
-                          },
-                        });
-                      }}
-                    >
-                      Approve
-                    </Button>
-                  </Col>
-                  <Col className="col-2">
-                    <Button
-                      variant="danger"
-                      type="submit"
-                      onClick={() => {
-                        Meteor.users.update(_id, {
-                          $set: {
-                            profile: {
-                              status: 'none',
+                          });
+                        }}
+                      >
+                        Approve
+                      </Button>
+                    </Col>
+                    <Col className="col-2">
+                      <Button
+                        variant="danger"
+                        type="submit"
+                        onClick={() => {
+                          Meteor.users.update(user, {
+                            $set: {
+                              profile: {
+                                status: 'none',
+                              },
                             },
-                          },
-                        });
-                      }}
-                    >
-                      Deny
-                    </Button>
-                  </Col>
-                </Row>
-              </Form.Group>
-            </Form>
+                          });
+                        }}
+                      >
+                        Deny
+                      </Button>
+                    </Col>
+                  </Row>
+                </Form.Group>
+              </Form>
+            ))}
           </Container>
           <div><br /></div>
           <Container className="vendorBlock py-2">
