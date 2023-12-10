@@ -67,7 +67,7 @@ const AdminHome = () => {
                         variant="success"
                         type="submit"
                         onClick={() => {
-                          Meteor.users.update(user, {
+                          Meteor.users.update(user._id, {
                             $set: {
                               profile: {
                                 status: 'approved',
@@ -84,7 +84,7 @@ const AdminHome = () => {
                         variant="danger"
                         type="submit"
                         onClick={() => {
-                          Meteor.users.update(user, {
+                          Meteor.users.update(user._id, {
                             $set: {
                               profile: {
                                 status: 'none',
