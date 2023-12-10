@@ -48,12 +48,15 @@ const AddMenuItem = () => {
     return { doc: document, ready: rdy };
   }, [_id]);
 
+  const userEmail = user.emails[0].address;
+  const vendorName = userEmail.split('@')[0];
+
   const submit = (data) => {
-    const { name, vendor, image, description, cost, vegan, available, calories } = data;
+    const { name, image, description, cost, vegan, available, calories } = data;
 
     const MenuItemData = {
       name,
-      vendor,
+      vendor: vendorName,
       image,
       description,
       cost,
@@ -68,7 +71,6 @@ const AddMenuItem = () => {
 
     const existingMenuItem = MenuItems.collection.findOne({
       name: name.trim(),
-      vendor: vendor.trim(),
     });
 
     if (existingMenuItem && existingMenuItem._id !== _id) {
@@ -107,7 +109,7 @@ const AddMenuItem = () => {
           <Col className="text-center">
             <h2>Add Menu Item</h2>
           </Col>
-          <AutoForm schema={bridge} onSubmit={submit} model={doc}>
+          <AutoForm schema={bridge} onSubmit={submit} model={{ doc, vendor: vendorName }}>
             <Card>
               <Card.Body>
                 <Row>
@@ -115,7 +117,14 @@ const AddMenuItem = () => {
                     <TextField id="add-menu-item-field-name" name="name" showInlineError />
                   </Col>
                   <Col xs={12}>
-                    <TextField id="add-menu-item-field-vendor" name="vendor" showInlineError />
+                    <div>Vendor Name</div>
+                    <input
+                      id="add-menu-item-field-vendor"
+                      name="vendor"
+                      defaultValue={vendorName}
+                      readOnly
+                      className="form-control"
+                    />
                   </Col>
                   <Col xs={12}>
                     <TextField id="add-menu-item-field-image" name="image" showInlineError />
