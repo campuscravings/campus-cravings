@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Card, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import { Vendors } from '../../api/vendors/Vendors';
 
 /** Renders a single row in the List Vendor table. See pages/ListVendors.jsx. */
 const Vendor = ({ vendor }) => (
@@ -14,8 +15,17 @@ const Vendor = ({ vendor }) => (
       <Card.Text>{vendor.hours}</Card.Text>
       <Card.Text>{vendor.description}</Card.Text>
       <Link to={`/menu/${vendor.name}`}>
-        <Button variant="primary">View Menu</Button>
+        <Button variant="success">View Menu</Button>
       </Link>
+      <Button
+        className="mt-2"
+        variant="success"
+        onClick={() => {
+          Vendors.collection.insert({});
+        }}
+      >
+        Add to Favorites
+      </Button>
     </Card.Body>
   </Card>
 );
