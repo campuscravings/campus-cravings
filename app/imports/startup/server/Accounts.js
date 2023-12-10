@@ -10,6 +10,9 @@ const createUser = (email, password, role) => {
     username: email,
     email: email,
     password: password,
+    profile: {
+      status: 'none',
+    },
   });
   if (role === 'vendor') {
     Roles.createRole(role, { unlessExists: true });

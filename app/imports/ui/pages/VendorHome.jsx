@@ -11,7 +11,7 @@ import MenuItem from '../components/MenuItem';
 const VendorHome = () => {
   const { ready, vendors, menuItems } = useTracker(() => {
     // Get access to vendor and menu item documents.
-    const subscription = Meteor.subscribe(Vendors.userPublicationName);
+    const subscription = Meteor.subscribe(Vendors.vendorPublicationName);
     const subscription2 = Meteor.subscribe(MenuItems.publicationName);
     // Determine if the subscription is ready
     const rdy = subscription.ready() && subscription2.ready();
