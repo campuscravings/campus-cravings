@@ -1,10 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Card, Button } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Card } from 'react-bootstrap';
 
 /** Renders a single row in the List Vendor table. See pages/ListVendors.jsx. */
-const Vendor = ({ vendor }) => (
+const VendorAdmin = ({ vendor }) => (
   <Card className="h-100">
     <Card.Header>
       <Card.Title>{vendor.name}</Card.Title>
@@ -13,15 +12,13 @@ const Vendor = ({ vendor }) => (
     <Card.Body>
       <Card.Text>{vendor.hours}</Card.Text>
       <Card.Text>{vendor.description}</Card.Text>
-      <Link to={`/menu/${vendor.name}`}>
-        <Button variant="primary">View Menu</Button>
-      </Link>
+      <footer className="blockquote-footer">{vendor.owner}</footer>
     </Card.Body>
   </Card>
 );
 
 // Require a document to be passed to this component.
-Vendor.propTypes = {
+VendorAdmin.propTypes = {
   vendor: PropTypes.shape({
     name: PropTypes.string,
     address: PropTypes.string,
@@ -33,4 +30,4 @@ Vendor.propTypes = {
   }).isRequired,
 };
 
-export default Vendor;
+export default VendorAdmin;

@@ -16,8 +16,6 @@ class VendorsCollection {
       address: String,
       description: String,
       hours: String,
-      tags: [String],
-      menu: [String],
       logo: String,
       owner: String,
     });
@@ -25,6 +23,7 @@ class VendorsCollection {
     this.collection.attachSchema(this.schema);
     // Define names for publications and subscriptions
     this.userPublicationName = `${this.name}.publication.user`;
+    this.vendorPublicationName = `${this.name}.publication.vendor`;
     this.adminPublicationName = `${this.name}.publication.admin`;
   }
 }

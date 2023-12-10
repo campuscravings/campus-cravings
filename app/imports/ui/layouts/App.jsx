@@ -6,10 +6,7 @@ import { Roles } from 'meteor/alanning:roles';
 import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 import Footer from '../components/Footer';
 import Landing from '../pages/Landing';
-import ListStuffAdmin from '../pages/ListStuffAdmin';
 import ListVendors from '../pages/ListVendors';
-import AddStuff from '../pages/AddStuff';
-import EditStuff from '../pages/EditStuff';
 import NotFound from '../pages/NotFound';
 import SignUp from '../pages/SignUp';
 import SignOut from '../pages/SignOut';
@@ -23,6 +20,9 @@ import Profile from '../pages/Profile';
 import VendorHome from '../pages/VendorHome';
 import AdminHome from '../pages/AdminHome';
 import AddVendor from '../pages/AddVendor';
+import AddMenuItem from '../pages/AddMenuItem';
+import Menu from '../pages/Menu';
+import ListVendorsAdmin from '../pages/ListVendorsAdmin';
 
 /** Top-level layout component for this application. Called in imports/startup/client/startup.jsx. */
 const App = () => {
@@ -43,17 +43,17 @@ const App = () => {
           <Route path="/signout" element={<SignOut />} />
           <Route path="/userhome" element={<ProtectedRoute><UserHome /></ProtectedRoute>} />
           <Route path="/home" element={<ProtectedRoute><Landing /></ProtectedRoute>} />
-          <Route path="/vendorhome" element={<ProtectedRoute><VendorHome /></ProtectedRoute>} />
+          <Route path="/vendorhome" element={<VendorProtectedRoute ready={ready}><VendorHome /></VendorProtectedRoute>} />
           <Route path="/list" element={<ProtectedRoute><ListVendors /></ProtectedRoute>} />
-          <Route path="/add" element={<ProtectedRoute><AddStuff /></ProtectedRoute>} />
-          <Route path="/edit/:_id" element={<ProtectedRoute><EditStuff /></ProtectedRoute>} />
-          <Route path="/admin" element={<AdminProtectedRoute ready={ready}><ListStuffAdmin /></AdminProtectedRoute>} />
+          <Route path="/admin" element={<AdminProtectedRoute ready={ready}><ListVendorsAdmin /></AdminProtectedRoute>} />
           <Route path="/adminhome" element={<AdminProtectedRoute ready={ready}><AdminHome /></AdminProtectedRoute>} />
           <Route path="/addvendor" element={<AdminProtectedRoute ready={ready}><AddVendor /></AdminProtectedRoute>} />
           <Route path="/notauthorized" element={<NotAuthorized />} />
           <Route path="*" element={<NotFound />} />
           <Route path="/userprofile" element={<ProtectedRoute><UserProfile /></ProtectedRoute>} />
           <Route path="/profile" element={<ProtectedRoute><Profile /></ProtectedRoute>} />
+          <Route path="/addmenuitem" element={<ProtectedRoute><AddMenuItem /></ProtectedRoute>} />
+          <Route path="/menu/:vendorName" element={<ProtectedRoute><Menu /></ProtectedRoute>} />
         </Routes>
         <Footer />
       </div>
@@ -71,9 +71,20 @@ const ProtectedRoute = ({ children }) => {
   return isLogged ? children : <Navigate to="/signin" />;
 };
 
+const VendorProtectedRoute = ({ ready, children }) => {
+  const isLogged = Meteor.userId() !== null;
+  if (!isLogged) {
+    return <Navigate to="/signin" />;
+  }
+  if (!ready) {
+    return <LoadingSpinner />;
+  }
+  const isVendor = Roles.userIsInRole(Meteor.userId(), 'vendor');
+  return (isLogged && isVendor) ? children : <Navigate to="/notauthorized" />;
+};
+
 /**
- * AdminProtectedRoute
- * allows access for all permissions of user, vendor, and admin
+ * AdminProtectedRoute: allows access for all permissions of user, vendor, and admin
  */
 const AdminProtectedRoute = ({ ready, children }) => {
   const isLogged = Meteor.userId() !== null;
@@ -93,6 +104,17 @@ ProtectedRoute.propTypes = {
 };
 
 ProtectedRoute.defaultProps = {
+  children: <Landing />,
+};
+
+// Require a component and location to be passed to each VendorProtectedRoute.
+VendorProtectedRoute.propTypes = {
+  ready: PropTypes.bool,
+  children: PropTypes.oneOfType([PropTypes.object, PropTypes.func]),
+};
+
+VendorProtectedRoute.defaultProps = {
+  ready: false,
   children: <Landing />,
 };
 

@@ -11,6 +11,10 @@ const createUser = (email, password, role) => {
     email: email,
     password: password,
   });
+  if (role === 'vendor') {
+    Roles.createRole(role, { unlessExists: true });
+    Roles.addUsersToRoles(userID, 'vendor');
+  }
   if (role === 'admin') {
     Roles.createRole(role, { unlessExists: true });
     Roles.addUsersToRoles(userID, 'admin');
@@ -23,6 +27,6 @@ if (Meteor.users.find().count() === 0) {
     console.log('Creating the default user(s)');
     Meteor.settings.defaultAccounts.forEach(({ email, password, role }) => createUser(email, password, role));
   } else {
-    console.log('Cannot initialize the database!  Please invoke meteor with a settings file.');
+    console.log('Cannot initialize the database! Please invoke meteor with a settings file.');
   }
 }

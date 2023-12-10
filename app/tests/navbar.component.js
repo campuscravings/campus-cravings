@@ -42,6 +42,16 @@ class NavBar {
     await testController.click('#navbar-sign-out');
   }
 
+  async gotoProfilePage(testController) {
+    const visible = await Selector('#basic-navbar-nav').visible;
+    if (!visible) {
+      await testController.click('button.navbar-toggler');
+    }
+    await testController.expect(Selector('#navbar-current-user').exists).ok();
+    await testController.click('#navbar-current-user');
+    await testController.click('#profile-nav');
+  }
+
   /** Pull down login menu, go to sign up page. */
   async gotoSignUpPage(testController) {
     await this.ensureLogout(testController);
@@ -53,29 +63,21 @@ class NavBar {
     await testController.click('#login-dropdown-sign-up');
   }
 
-  async gotoUserProfilePage(testController) {
-    await testController.click('#user-profile-nav');
-  }
-
-  async gotoProfilePage(testController) {
-    await testController.click('#profile-nav');
-  }
-
-  async gotoUserHomePage(testController) {
-    await testController.click('#user-home-nav');
-  }
+  // async gotoUserHomePage(testController) {
+  //   await testController.click('#user-home-nav');
+  // }
 
   async gotoVendorsPage(testController) {
     await testController.click('#list-vendors-nav');
   }
 
-  async gotoAdminHomePage(testController) {
-    await testController.click('#admin-home-nav');
-  }
-
-  async gotoVendorHomePage(testController) {
-    await testController.click('#vendor-home-nav');
-  }
+  // async gotoAdminHomePage(testController) {
+  //   await testController.click('#admin-home-nav');
+  // }
+  //
+  // async gotoVendorHomePage(testController) {
+  //   await testController.click('#vendor-home-nav');
+  // }
 
   async gotoAddVendorPage(testController) {
     await testController.click('#add-vendors-nav');

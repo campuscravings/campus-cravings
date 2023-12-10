@@ -13,8 +13,6 @@ const formSchema = new SimpleSchema({
   address: String,
   description: String,
   hours: String,
-  tags: [String],
-  menu: [String],
   logo: String,
 });
 
@@ -25,10 +23,10 @@ const AddVendor = () => {
 
   // On submit, insert the data.
   const submit = (data, formRef) => {
-    const { name, address, description, hours, tags, menu, logo } = data;
+    const { name, address, description, hours, logo } = data;
     const owner = Meteor.user().username;
     Vendors.collection.insert(
-      { name, address, description, hours, tags, menu, owner, logo },
+      { name, address, description, hours, owner, logo },
       (error) => {
         if (error) {
           swal('Error', error.message, 'error');
@@ -57,9 +55,7 @@ const AddVendor = () => {
                 <LongTextField name="description" />
                 <Row>
                   <Col><TextField name="hours" /></Col>
-                  <Col><TextField name="tags" /></Col>
                 </Row>
-                <LongTextField name="menu" />
                 <LongTextField name="logo" />
                 <SubmitField />
                 <ErrorsField />
