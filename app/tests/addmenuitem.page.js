@@ -5,7 +5,6 @@ class AddMenuItemPage {
     this.pageId = '#add-menu-item-page';
     this.pageSelector = Selector(this.pageId);
     this.nameField = Selector('#add-menu-item-field-name');
-    this.vendorField = Selector('#add-menu-item-field-vendor');
     this.imageField = Selector('#add-menu-item-field-image');
     this.descriptionField = Selector('#add-menu-item-field-description');
     this.veganField = Selector('#add-menu-item-field-vegan');
@@ -23,10 +22,6 @@ class AddMenuItemPage {
 
   async typeName(testController, text) {
     await testController.typeText(this.nameField, text);
-  }
-
-  async typeVendor(testController, text) {
-    await testController.typeText(this.vendorField, text);
   }
 
   async typeDescription(testController, text) {

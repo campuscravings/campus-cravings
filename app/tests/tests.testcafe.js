@@ -24,7 +24,6 @@ const userinfo = { name: 'Fish', bio: 'Sample bio text', image: 'https://media.t
 
 /** Test menu item info */
 const menuiteminfo = { name: 'Vegetable Stir Fry',
-  vendor: 'Panda Express',
   description: 'TEST TEST TEST',
   image: 'https://natashaskitchen.com/wp-content/uploads/2020/08/Vegetable-Stir-Fry-2.jpg',
   cost: '10.33',
@@ -106,7 +105,6 @@ test('Test AddMenuItem page functions', async (testController) => {
   await navBar.gotoAddMenuItemPage(testController);
   await addMenuItemPage.isDisplayed(testController);
   await addMenuItemPage.typeName(testController, menuiteminfo.name);
-  await addMenuItemPage.typeVendor(testController, menuiteminfo.vendor);
   await addMenuItemPage.typeImage(testController, menuiteminfo.image);
   await addMenuItemPage.typeDescription(testController, menuiteminfo.description);
   await addMenuItemPage.typeCost(testController, menuiteminfo.cost);
@@ -115,7 +113,7 @@ test('Test AddMenuItem page functions', async (testController) => {
   await addMenuItemPage.typeCalories(testController, menuiteminfo.calories);
   await addMenuItemPage.submitForm(testController);
   await addMenuItemPage.confirmDialog(testController);
-  await testController.navigateTo('http://localhost:3000/menu/Panda Express');
+  await testController.navigateTo('http://localhost:3000/menu/vendor');
   await menuPage.menuElementsExist(testController);
   await menuPage.verifyMenuData(testController, menuiteminfo);
 });
