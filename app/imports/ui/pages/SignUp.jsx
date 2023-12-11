@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link, Navigate } from 'react-router-dom';
 import { Accounts } from 'meteor/accounts-base';
-import { Alert, Card, Col, Container, Row } from 'react-bootstrap';
+import { Alert, Card, Col, Container, Row, Button } from 'react-bootstrap';
 import SimpleSchema from 'simpl-schema';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import { AutoForm, ErrorsField, SubmitField, TextField } from 'uniforms-material';
@@ -54,6 +54,21 @@ const SignUp = () => {
                 <h4 className="text-center">Register your account</h4>
                 <TextField id="signup-form-email" name="email" placeholder="E-mail address" />
                 <TextField id="signup-form-email" name="password" placeholder="Password" type="password" />
+                <Button // this will change status from 'none' to 'pending'
+                  variant="success"
+                  type="submit"
+                  onClick={() => {
+                    Meteor.users.update(user._id, {
+                      $set: {
+                        profile: {
+                          status: 'pending',
+                        },
+                      },
+                    });
+                  }}
+                >
+                  Approve
+                </Button>
                 <ErrorsField />
                 <SubmitField id="signin-form-submit" />
               </Card.Body>

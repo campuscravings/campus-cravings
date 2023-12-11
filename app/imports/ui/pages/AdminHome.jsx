@@ -1,7 +1,6 @@
 import React from 'react';
 import { Col, Container, Image, Row, Form, Button } from 'react-bootstrap';
 import { useTracker } from 'meteor/react-meteor-data';
-import { useParams } from 'react-router';
 import { Meteor } from 'meteor/meteor';
 import { Vendors } from '../../api/vendors/Vendors';
 import LoadingSpinner from '../components/LoadingSpinner';
@@ -9,7 +8,6 @@ import VendorAdmin from '../components/VendorAdmin';
 
 /** Admin Home */
 const AdminHome = () => {
-  const { _id } = useParams();
   const { ready, vendors } = useTracker(() => {
     // Get access to vendor and menu item documents.
     const subscription = Meteor.subscribe(Vendors.adminPublicationName);
@@ -23,12 +21,9 @@ const AdminHome = () => {
     };
   }, []);
 
-  const { users } = useTracker(
-    () => ({
-      users: Meteor.users.find({ profile: { status: 'pending' } }).fetch(),
-    }),
-    [],
-  );
+  const { users } = useTracker(() => ({
+    users: Meteor.users.find({ profile: { status: 'pending' } }).fetch(),
+  }), []);
 
   if (vendors.length === 0) {
     return (ready ? (
@@ -55,7 +50,7 @@ const AdminHome = () => {
         <Col className="vendorBlock py-2">
           <h2>Vendor Approval</h2>
           <Container className="vendorBlock py-2">
-            { Meteor.users.find({ profile: { status: 'pending' } }).fetch().map(user => (
+            { users.map(user => (
               <Form>
                 <Form.Group className="mb-3" controlId="formApproveDeny">
                   <Row>
@@ -63,7 +58,7 @@ const AdminHome = () => {
                       <Form.Label>VENDOR NAME</Form.Label>
                     </Col>
                     <Col className="col-2">
-                      <Button
+                      <Button // this will change status from 'pending' to 'approved'
                         variant="success"
                         type="submit"
                         onClick={() => {
@@ -80,7 +75,7 @@ const AdminHome = () => {
                       </Button>
                     </Col>
                     <Col className="col-2">
-                      <Button
+                      <Button // this will change status from 'pending' to 'none'
                         variant="danger"
                         type="submit"
                         onClick={() => {

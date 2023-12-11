@@ -19,11 +19,6 @@ class ProfilesCollection {
         optional: true,
       },
       user: String,
-      condition: { // Defines the state of approval for vendor role
-        type: String,
-        allowedValues: ['approved', 'waiting', 'none'],
-        defaultValue: 'none',
-      },
       foods: {
         type: Array,
         minCount: 1,
