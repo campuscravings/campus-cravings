@@ -24,6 +24,12 @@ const createUser = (email, password, role) => {
   }
 };
 
+const updateRole = (userID, status) => {
+  if (status === 'approved') {
+    Roles.addUsersToRoles(userID, 'vendor');
+  }
+};
+
 // When running app for first time, pass a settings file to set up a default user account.
 if (Meteor.users.find().count() === 0) {
   if (Meteor.settings.defaultAccounts) {
@@ -33,3 +39,5 @@ if (Meteor.users.find().count() === 0) {
     console.log('Cannot initialize the database! Please invoke meteor with a settings file.');
   }
 }
+
+updateRole();

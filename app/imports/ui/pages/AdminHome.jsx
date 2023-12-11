@@ -1,7 +1,7 @@
 import React from 'react';
 import { Col, Container, Image, Row, Form, Button } from 'react-bootstrap';
 import { useTracker } from 'meteor/react-meteor-data';
-import { Roles } from 'meteor/alanning:roles';
+import { Accounts } from 'meteor/accounts-base';
 import { Meteor } from 'meteor/meteor';
 import { Vendors } from '../../api/vendors/Vendors';
 import LoadingSpinner from '../components/LoadingSpinner';
@@ -63,7 +63,7 @@ const AdminHome = () => {
                         variant="success"
                         type="submit"
                         onClick={() => {
-                          Roles.addUsersToRoles(user._id, 'vendor');
+                          Accounts.updateRole(user._id, 'approved');
                           Meteor.users.update(user._id, {
                             $set: {
                               profile: {
