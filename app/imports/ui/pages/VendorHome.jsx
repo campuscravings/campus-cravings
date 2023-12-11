@@ -29,7 +29,7 @@ const VendorHome = () => {
   if (menuItems.length === 0 && vendors.length === 0) {
     return (ready ? (
       <Container id="vendorhome-page" fluid>
-        <div className="ckH">{vendors[0].name}</div>
+        <div className="ckH">No vendors available</div>
         <Image
           fluid
           src="../../images/paradise-palms.jpeg"
