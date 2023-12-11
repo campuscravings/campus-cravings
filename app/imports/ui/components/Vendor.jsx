@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Card, Button } from 'react-bootstrap';
+import { Card, Button, Image } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
 /** Renders a single row in the List Vendor table. See pages/ListVendors.jsx. */
@@ -8,6 +8,7 @@ const Vendor = ({ vendor }) => (
   <Card className="h-100">
     <Card.Header>
       <Card.Title>{vendor.name}</Card.Title>
+      <Image src={vendor.logo} width={75} />
       <Card.Subtitle>{vendor.address}</Card.Subtitle>
     </Card.Header>
     <Card.Body>
