@@ -79,7 +79,7 @@ const VendorProtectedRoute = ({ ready, children }) => {
   if (!ready) {
     return <LoadingSpinner />;
   }
-  const isVendor = (Meteor.user().profile.status === 'pending' && Roles.userIsInRole(Meteor.userId(), 'vendor'));
+  const isVendor = (Meteor.user().profile.status === 'pending' || Roles.userIsInRole(Meteor.userId(), 'vendor'));
   return (isLogged && isVendor) ? children : <Navigate to="/notauthorized" />;
 };
 
