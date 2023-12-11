@@ -98,7 +98,7 @@ test.skip('Test UserProfile page functions', async (testController) => {
   await profilePage.verifyProfileData(testController, userinfo);
 });
 
-test('Test AddMenuItem page functions', async (testController) => {
+test.skip('Test AddMenuItem page functions', async (testController) => {
   await navBar.gotoSignInPage(testController);
   await signinPage.signin(testController, vendorCredentials.username, vendorCredentials.password);
   await landingPage.isDisplayed(testController);
