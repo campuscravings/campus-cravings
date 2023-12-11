@@ -76,3 +76,9 @@ Meteor.publish(null, function () {
   }
   return this.ready();
 });
+
+Meteor.users.allow({
+  update(userId) {
+    return userId && Roles.userIsInRole(userId, 'admin');
+  },
+});

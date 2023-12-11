@@ -1,6 +1,7 @@
 import React from 'react';
 import { Col, Container, Image, Row, Form, Button } from 'react-bootstrap';
 import { useTracker } from 'meteor/react-meteor-data';
+import { Roles } from 'meteor/alanning:roles';
 import { Meteor } from 'meteor/meteor';
 import { Vendors } from '../../api/vendors/Vendors';
 import LoadingSpinner from '../components/LoadingSpinner';
@@ -51,17 +52,18 @@ const AdminHome = () => {
           <h2>Vendor Approval</h2>
           <Container className="vendorBlock py-2">
             { users.map(user => (
-              <Form>
+              <Form className="vendorBlock mb-2 mt-2">
                 <Form.Group className="mb-3" controlId="formApproveDeny">
                   <Row>
-                    <Col className="col-8 mt-2">
-                      <Form.Label>VENDOR NAME</Form.Label>
+                    <Col className="col-7 mt-3 ms-4">
+                      <Form.Label key={user._id}>{user.username}</Form.Label>
                     </Col>
-                    <Col className="col-2">
+                    <Col className="col-2 mt-2">
                       <Button // this will change status from 'pending' to 'approved'
                         variant="success"
                         type="submit"
                         onClick={() => {
+                          Roles.addUsersToRoles(user._id, 'vendor');
                           Meteor.users.update(user._id, {
                             $set: {
                               profile: {
@@ -74,7 +76,7 @@ const AdminHome = () => {
                         Approve
                       </Button>
                     </Col>
-                    <Col className="col-2">
+                    <Col className="col-2 mt-2">
                       <Button // this will change status from 'pending' to 'none'
                         variant="danger"
                         type="submit"
@@ -95,10 +97,6 @@ const AdminHome = () => {
                 </Form.Group>
               </Form>
             ))}
-          </Container>
-          <div><br /></div>
-          <Container className="vendorBlock py-2">
-            View All
           </Container>
         </Col>
       </Row>

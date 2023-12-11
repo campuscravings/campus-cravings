@@ -16,12 +16,6 @@ const Vendor = ({ vendor }) => (
       <Link to={`/menu/${vendor.name}`}>
         <Button variant="success">View Menu</Button>
       </Link>
-      <Button
-        className="mt-2"
-        variant="success"
-      >
-        Add to Favorites
-      </Button>
     </Card.Body>
   </Card>
 );

@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { Link, Navigate } from 'react-router-dom';
 import { Accounts } from 'meteor/accounts-base';
-import { Alert, Card, Col, Container, Row, Form } from 'react-bootstrap';
+import { Alert, Card, Col, Container, Row } from 'react-bootstrap';
 import SimpleSchema from 'simpl-schema';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
-import { AutoForm, ErrorsField, SubmitField, TextField } from 'uniforms-material';
+import { AutoForm, ErrorsField, SubmitField, TextField, SelectField } from 'uniforms-material';
 import { Meteor } from 'meteor/meteor';
 import { Roles } from 'meteor/alanning:roles';
 
@@ -18,13 +18,14 @@ const SignUp = () => {
   const schema = new SimpleSchema({
     email: String,
     password: String,
+    status: String,
   });
   const bridge = new SimpleSchema2Bridge(schema);
 
   /* Handle SignUp submission. Create user account and a profile entry, then redirect to the home page. */
   const submit = (doc) => {
-    const { email, password, status } = doc;
-    Accounts.createUser({ email, username: email, password, profile: status }, (err) => {
+    const { email, password } = doc;
+    Accounts.createUser({ email, username: email, password, profiles: { status: 'pending' } }, (err) => {
       if (err) {
         setError(err.reason);
       } else {
@@ -33,11 +34,6 @@ const SignUp = () => {
       }
     });
   };
-
-  function changeStatus() {
-    const status = 'pending';
-    return status;
-  }
 
   // if correct authentication, redirect to from: page instead of signup screen
   if (redirectToReferer) {
@@ -59,10 +55,10 @@ const SignUp = () => {
                 <h4 className="text-center">Register your account</h4>
                 <TextField id="signup-form-email" name="email" placeholder="E-mail address" />
                 <TextField id="signup-form-email" name="password" placeholder="Password" type="password" />
-                <Form.Check
+                <SelectField
                   name="status"
-                  onClick={changeStatus()}
-                  label="Request for vendor role"
+                  labelClassName={['Request for vendor role', 'Regular user access']}
+                  options={[{ label: 'Request for vendor role', value: 'pending' }, { label: 'Regular user access', value: 'none' }]}
                 />
                 <ErrorsField />
                 <SubmitField id="signin-form-submit" />

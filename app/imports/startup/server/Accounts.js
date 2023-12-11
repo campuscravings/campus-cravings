@@ -11,7 +11,7 @@ const createUser = (email, password, role) => {
     email: email,
     password: password,
     profile: {
-      status: 'none',
+      status: 'pending',
     },
   });
   if (role === 'vendor') {
