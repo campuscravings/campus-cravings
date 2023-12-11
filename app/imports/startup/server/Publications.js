@@ -28,11 +28,7 @@ Meteor.publish(Profiles.adminPublicationName, function () {
 });
 
 Meteor.publish(Vendors.userPublicationName, function () {
-  if (this.userId) {
-    const username = Meteor.users.findOne(this.userId).username;
-    return Vendors.collection.find({ owner: username });
-  }
-  return this.ready();
+  return Vendors.collection.find();
 });
 
 Meteor.publish(Vendors.vendorPublicationName, function () {
@@ -58,8 +54,5 @@ Meteor.publish(null, function () {
 });
 
 Meteor.publish(MenuItems.publicationName, function () {
-  if (this.userId) {
-    return MenuItems.collection.find();
-  }
-  return this.ready();
+  return MenuItems.collection.find();
 });
