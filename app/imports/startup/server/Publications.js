@@ -4,6 +4,7 @@ import { Profiles } from '../../api/profiles/Profiles';
 import { Vendors } from '../../api/vendors/Vendors';
 import { MenuItems } from '../../api/menuItems/MenuItems';
 
+// publishes only user's profile to user
 Meteor.publish(Profiles.userPublicationName, function () {
   if (this.userId) {
     const username = Meteor.users.findOne(this.userId).username;
@@ -12,6 +13,7 @@ Meteor.publish(Profiles.userPublicationName, function () {
   return this.ready();
 });
 
+// publishes only the vendor's profile to vendor
 Meteor.publish(Profiles.vendorPublicationName, function () {
   if (this.userId && Roles.userIsInRole(this.userId, 'vendor')) {
     const username = Meteor.users.findOne(this.userId).username;
@@ -20,6 +22,7 @@ Meteor.publish(Profiles.vendorPublicationName, function () {
   return this.ready();
 });
 
+// publishes full list of profiles to admin
 Meteor.publish(Profiles.adminPublicationName, function () {
   if (this.userId && Roles.userIsInRole(this.userId, 'admin')) {
     return Profiles.collection.find();
@@ -27,10 +30,12 @@ Meteor.publish(Profiles.adminPublicationName, function () {
   return this.ready();
 });
 
+// publishes full list of vendors to user
 Meteor.publish(Vendors.userPublicationName, function () {
   return Vendors.collection.find();
 });
 
+// publishes only the vendor to the vendor
 Meteor.publish(Vendors.vendorPublicationName, function () {
   if (this.userId && Roles.userIsInRole(this.userId, 'vendor')) {
     const username = Meteor.users.findOne(this.userId).username;
@@ -39,6 +44,7 @@ Meteor.publish(Vendors.vendorPublicationName, function () {
   return this.ready();
 });
 
+// publishes full list of vendors to admin
 Meteor.publish(Vendors.adminPublicationName, function () {
   if (this.userId && Roles.userIsInRole(this.userId, 'admin')) {
     return Vendors.collection.find();
@@ -55,4 +61,18 @@ Meteor.publish(null, function () {
 
 Meteor.publish(MenuItems.publicationName, function () {
   return MenuItems.collection.find();
+});
+
+// publish all users to admin
+Meteor.publish(null, function () {
+  if (this.userId && Roles.userIsInRole(this.userId, 'admin')) {
+    return Meteor.users.find();
+  }
+  return this.ready();
+});
+
+Meteor.users.allow({
+  update(userId) {
+    return userId && Roles.userIsInRole(userId, 'admin');
+  },
 });

@@ -14,7 +14,7 @@ const Vendor = ({ vendor }) => (
       <Card.Text>{vendor.hours}</Card.Text>
       <Card.Text>{vendor.description}</Card.Text>
       <Link to={`/menu/${vendor.name}`}>
-        <Button variant="primary">View Menu</Button>
+        <Button variant="success">View Menu</Button>
       </Link>
     </Card.Body>
   </Card>

@@ -10,6 +10,9 @@ const createUser = (email, password, role) => {
     username: email,
     email: email,
     password: password,
+    profile: {
+      status: 'pending',
+    },
   });
   if (role === 'vendor') {
     Roles.createRole(role, { unlessExists: true });
@@ -18,6 +21,12 @@ const createUser = (email, password, role) => {
   if (role === 'admin') {
     Roles.createRole(role, { unlessExists: true });
     Roles.addUsersToRoles(userID, 'admin');
+  }
+};
+
+const updateRole = (userID, status) => {
+  if (status === 'approved') {
+    Roles.addUsersToRoles(userID, 'vendor');
   }
 };
 
@@ -30,3 +39,5 @@ if (Meteor.users.find().count() === 0) {
     console.log('Cannot initialize the database! Please invoke meteor with a settings file.');
   }
 }
+
+updateRole();
