@@ -11,7 +11,8 @@
     { "email": "codykau123@hawaii.edu", "password": "changeme", "role": "admin" },
     { "email": "bueche123@hawaii.edu", "password": "changeme", "role": "admin" },
     { "email": "travisqu123@hawaii.edu", "password": "changeme", "role": "admin" },
-    { "email": "john@foo.com", "password": "changeme" }
+    { "email": "john@foo.com", "password": "changeme" },
+    { "email": "testnewvendor@foo.com", "password":  "changeme", "status": "pending"}
   ],
 
   "defaultMenuItems": [

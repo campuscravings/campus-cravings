@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link, Navigate } from 'react-router-dom';
 import { Accounts } from 'meteor/accounts-base';
-import { Alert, Card, Col, Container, Row, Button } from 'react-bootstrap';
+import { Alert, Card, Col, Container, Row, Form } from 'react-bootstrap';
 import SimpleSchema from 'simpl-schema';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import { AutoForm, ErrorsField, SubmitField, TextField } from 'uniforms-material';
@@ -9,7 +9,7 @@ import { Meteor } from 'meteor/meteor';
 import { Roles } from 'meteor/alanning:roles';
 
 /*
- * SignUp component is similar to signin component, but we create a new user instead.
+ * SignUp component is similar to signIn component, but we create a new user instead.
  */
 const SignUp = () => {
   const [error, setError] = useState('');
@@ -23,8 +23,8 @@ const SignUp = () => {
 
   /* Handle SignUp submission. Create user account and a profile entry, then redirect to the home page. */
   const submit = (doc) => {
-    const { email, password } = doc;
-    Accounts.createUser({ email, username: email, password }, (err) => {
+    const { email, password, status } = doc;
+    Accounts.createUser({ email, username: email, password, profile: status }, (err) => {
       if (err) {
         setError(err.reason);
       } else {
@@ -33,6 +33,11 @@ const SignUp = () => {
       }
     });
   };
+
+  function changeStatus() {
+    const status = 'pending';
+    return status;
+  }
 
   // if correct authentication, redirect to from: page instead of signup screen
   if (redirectToReferer) {
@@ -54,21 +59,11 @@ const SignUp = () => {
                 <h4 className="text-center">Register your account</h4>
                 <TextField id="signup-form-email" name="email" placeholder="E-mail address" />
                 <TextField id="signup-form-email" name="password" placeholder="Password" type="password" />
-                <Button // this will change status from 'none' to 'pending'
-                  variant="success"
-                  type="submit"
-                  onClick={() => {
-                    Meteor.users.update(user._id, {
-                      $set: {
-                        profile: {
-                          status: 'pending',
-                        },
-                      },
-                    });
-                  }}
-                >
-                  Approve
-                </Button>
+                <Form.Check
+                  name="status"
+                  onClick={changeStatus()}
+                  label="Request for vendor role"
+                />
                 <ErrorsField />
                 <SubmitField id="signin-form-submit" />
               </Card.Body>
